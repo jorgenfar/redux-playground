@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 
-import name from './reducers';
-import Greeter from './greeter';
+import { login } from './app/reducers';
+import routes from './app/routes';
+import Greeter from './app/login/containers/greeter';
 
 const store = createStore(
-  name,
-  name(),
+  login,
+  login(),
   window.devToolsExtension && window.devToolsExtension()
 );
 
