@@ -1,6 +1,3 @@
-var path = require('path');
-var webpack = require('webpack');
-
 module.exports = {
   entry: './app.js',
   output: {
@@ -17,13 +14,13 @@ module.exports = {
         exclude: /node_modules/,
         query: {
           plugins: ['transform-decorators'],
-          presets: ['es2015', 'stage-0', 'react']
-        }
+          presets: ['es2015', 'stage-0', 'react'],
+        },
       },
       {
-        test:   /\.css$/,
-        loader: "style-loader!css-loader!postcss-loader"
-      }
-    ]
+        test: /\.css$/,
+        loader: 'style-loader!css-loader!postcss-loader',
+      },
+    ],
   },
 };
