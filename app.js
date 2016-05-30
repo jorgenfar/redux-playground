@@ -1,22 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
-import { login } from './app/reducers';
-import routes from './app/routes';
-import Greeter from './app/login/containers/greeter';
+import rootSaga from './sagas';
+import Counter from './Counter';
+import reducer, {
+  START,
+  STOP,
+} from './reducer';
 
+const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
-  login,
-  login(),
-  window.devToolsExtension && window.devToolsExtension()
+  reducer,
+  applyMiddleware(sagaMiddleware),
 );
 
-const App = (props) => (
-  <Provider store={store}>
-    <Greeter/>
-  </Provider>
-);
+sagaMiddleware.run(() => rootSaga(store.getState));
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+const action = (type) => store.dispatch({ type });
+
+function render() {
+  ReactDOM.render(
+    <Counter
+      value={store.getState().slide}
+      start={() => action(START)}
+      stop={() => action(STOP)}
+    />,
+    document.getElementById('root')
+  );
+}
+
+render();
+store.subscribe(render);
