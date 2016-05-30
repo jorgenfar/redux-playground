@@ -3,6 +3,6 @@ module.exports = {
   extends: 'airbnb',
   rules: {
     'react/sort-comp': [0],
-    'react/jsx-space-before-closing': [0]
+    'arrow-parens': ['error', 'always'],
   }
 };
