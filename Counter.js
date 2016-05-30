@@ -20,7 +20,7 @@ const Counter = ({
     <label>Random
       <input
         type="checkbox"
-        checked={mode === SLIDE_MODES.SEQUENTIAL}
+        checked={mode === SLIDE_MODES.RANDOM}
         onChange={() => {
           if (mode === SLIDE_MODES.SEQUENTIAL) {
             setModeRandom();
