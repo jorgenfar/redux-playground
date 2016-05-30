@@ -19,12 +19,12 @@ function* slideShow(getState) {
   }
 }
 
-function* watchSlideShow(getState) {
+function* toggleSlideShow(getState) {
   yield takeEvery(START, () => slideShow(getState));
 }
 
 export default function* rootSaga(getState) {
   yield [
-    watchSlideShow(getState),
+    toggleSlideShow(getState),
   ];
 }
