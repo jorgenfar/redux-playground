@@ -2,6 +2,8 @@ export const NEXT_SLIDE = 'NEXT_SLIDE';
 export const RANDOM_SLIDE = 'RANDOM_SLIDE';
 export const START = 'START';
 export const STOP = 'STOP';
+export const MODE_SEQUENTIAL = 'MODE_SEQUENTIAL';
+export const MODE_RANDOM = 'MODE_RANDOM';
 
 export const SLIDE_MODES = {
   SEQUENTIAL: 'SEQUENTIAL',
@@ -38,6 +40,18 @@ export default function reducer(state = {
       return {
         ...state,
         playing: false,
+      };
+    }
+    case MODE_SEQUENTIAL: {
+      return {
+        ...state,
+        mode: SLIDE_MODES.SEQUENTIAL,
+      };
+    }
+    case MODE_RANDOM: {
+      return {
+        ...state,
+        mode: SLIDE_MODES.RANDOM,
       };
     }
     default:

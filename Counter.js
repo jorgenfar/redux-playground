@@ -1,7 +1,15 @@
 /*eslint-disable no-unused-vars */
 import React, { Component, PropTypes } from 'react';
+import { SLIDE_MODES } from './reducer';
 
-const Counter = ({ value, start, stop }) => (
+const Counter = ({
+  value,
+  start,
+  stop,
+  setModeSequential,
+  setModeRandom,
+  mode,
+}) => (
   <div>
     <button onClick={start}>
       Count
@@ -10,6 +18,19 @@ const Counter = ({ value, start, stop }) => (
     <button onClick={stop}>
       Stop
     </button>
+    <label>Random
+      <input
+        type="checkbox"
+        checked={mode === SLIDE_MODES.SEQUENTIAL}
+        onChange={() => {
+          if (mode === SLIDE_MODES.SEQUENTIAL) {
+            setModeRandom();
+          } else {
+            setModeSequential();
+          }
+        }}
+      />
+    </label>
     <hr />
     <div>
       Counter value: {value}
@@ -21,6 +42,9 @@ Counter.propTypes = {
   value: PropTypes.number.isRequired,
   start: PropTypes.func.isRequired,
   stop: PropTypes.func.isRequired,
+  setModeSequential: PropTypes.func.isRequired,
+  setModeRandom: PropTypes.func.isRequired,
+  mode: PropTypes.string.isRequired,
 };
 
 export default Counter;
