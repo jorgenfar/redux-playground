@@ -66,10 +66,43 @@ export default function reducer(state = {
     case SET_DELAY: {
       return {
         ...state,
-        delay: action.delay,
-      }
+        delay: action.payload.delay,
+      };
     }
     default:
       return state;
   }
+}
+
+export function start() {
+  return {
+    type: START,
+  };
+}
+
+export function stop() {
+  return {
+    type: STOP,
+  };
+}
+
+export function setModeRandom() {
+  return {
+    type: MODE_RANDOM,
+  };
+}
+
+export function setModeSequential() {
+  return {
+    type: MODE_SEQUENTIAL,
+  };
+}
+
+export function setDelay(delay) {
+  return {
+    type: SET_DELAY,
+    payload: {
+      delay,
+    },
+  };
 }

@@ -1,40 +1,40 @@
 import React, { PropTypes } from 'react';
-import { SLIDE_MODES } from './reducer';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-const Counter = ({
-  value,
+import {
+  SLIDE_MODES,
   start,
   stop,
   setModeSequential,
   setModeRandom,
   setDelay,
-  delay,
-  mode,
-  counting
-}) => (
+} from './reducer';
+
+const Counter = (props) => (
   <div>
     <button
-      onClick={start}
-      disabled={counting}
+      onClick={props.start}
+      disabled={props.playing}
     >
       Count
     </button>
     {' '}
     <button
-      onClick={stop}
-      disabled={!counting}
+      onClick={props.stop}
+      disabled={!props.playing}
     >
       Stop
     </button>
     <label>Random
       <input
         type="checkbox"
-        checked={mode === SLIDE_MODES.RANDOM}
+        checked={props.mode === SLIDE_MODES.RANDOM}
         onChange={() => {
-          if (mode === SLIDE_MODES.SEQUENTIAL) {
-            setModeRandom();
+          if (props.mode === SLIDE_MODES.SEQUENTIAL) {
+            props.setModeRandom();
           } else {
-            setModeSequential();
+            props.setModeSequential();
           }
         }}
       />
@@ -42,21 +42,21 @@ const Counter = ({
     <label>Delay
       <input
         type="number"
-        value={delay}
+        value={props.delay}
         onChange={(event) =>
-          setDelay(parseInt(event.target.value, 10))
+          props.setDelay(parseInt(event.target.value, 10))
         }
       />
     </label>
     <hr />
     <div>
-      Counter value: {value}
+      Counter value: {props.slide}
     </div>
   </div>
 );
 
 Counter.propTypes = {
-  value: PropTypes.number.isRequired,
+  slide: PropTypes.number.isRequired,
   start: PropTypes.func.isRequired,
   stop: PropTypes.func.isRequired,
   setModeSequential: PropTypes.func.isRequired,
@@ -64,7 +64,23 @@ Counter.propTypes = {
   setDelay: PropTypes.func.isRequired,
   delay: PropTypes.number.isRequired,
   mode: PropTypes.string.isRequired,
-  counting: PropTypes.bool.isRequired,
+  playing: PropTypes.bool.isRequired,
 };
 
-export default Counter;
+const mapStateToProps = (state) => ({
+  slide: state.slide,
+  delay: state.delay,
+  mode: state.mode,
+  playing: state.playing,
+});
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({
+    start,
+    stop,
+    setModeSequential,
+    setModeRandom,
+    setDelay,
+  }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
