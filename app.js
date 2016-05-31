@@ -39,6 +39,7 @@ function render() {
       }
       mode={store.getState().mode}
       delay={store.getState().delay}
+      counting={store.getState().playing}
     />,
     document.getElementById('root')
   );

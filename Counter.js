@@ -9,14 +9,21 @@ const Counter = ({
   setModeRandom,
   setDelay,
   delay,
-  mode
+  mode,
+  counting
 }) => (
   <div>
-    <button onClick={start}>
+    <button
+      onClick={start}
+      disabled={counting}
+    >
       Count
     </button>
     {' '}
-    <button onClick={stop}>
+    <button
+      onClick={stop}
+      disabled={!counting}
+    >
       Stop
     </button>
     <label>Random
@@ -57,6 +64,7 @@ Counter.propTypes = {
   setDelay: PropTypes.func.isRequired,
   delay: PropTypes.number.isRequired,
   mode: PropTypes.string.isRequired,
+  counting: PropTypes.bool.isRequired,
 };
 
 export default Counter;
