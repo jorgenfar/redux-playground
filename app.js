@@ -10,6 +10,7 @@ import reducer, {
   STOP,
   MODE_SEQUENTIAL,
   MODE_RANDOM,
+  SET_DELAY,
 } from './reducer';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -30,7 +31,14 @@ function render() {
       stop={() => action(STOP)}
       setModeRandom={() => action(MODE_RANDOM)}
       setModeSequential={() => action(MODE_SEQUENTIAL)}
+      setDelay={(delay) =>
+        store.dispatch({
+          type: SET_DELAY,
+          delay,
+        })
+      }
       mode={store.getState().mode}
+      delay={store.getState().delay}
     />,
     document.getElementById('root')
   );

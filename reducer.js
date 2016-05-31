@@ -4,11 +4,16 @@ export const START = 'START';
 export const STOP = 'STOP';
 export const MODE_SEQUENTIAL = 'MODE_SEQUENTIAL';
 export const MODE_RANDOM = 'MODE_RANDOM';
+export const SET_DELAY = 'SET_DELAY';
 
 export const SLIDE_MODES = {
   SEQUENTIAL: 'SEQUENTIAL',
   RANDOM: 'RANDOM',
 };
+
+function getRandomSlide(numSlides) {
+  return Math.floor(Math.random() * numSlides);
+}
 
 export default function reducer(state = {
   slide: 0,
@@ -25,9 +30,13 @@ export default function reducer(state = {
       };
     }
     case RANDOM_SLIDE: {
+      let newSlide = getRandomSlide(state.numSlides);
+      while (newSlide === state.slide) {
+        newSlide = getRandomSlide(state.numSlides);
+      }
       return {
         ...state,
-        slide: Math.floor(Math.random() * state.numSlides),
+        slide: newSlide,
       };
     }
     case START: {
@@ -53,6 +62,12 @@ export default function reducer(state = {
         ...state,
         mode: SLIDE_MODES.RANDOM,
       };
+    }
+    case SET_DELAY: {
+      return {
+        ...state,
+        delay: action.delay,
+      }
     }
     default:
       return state;

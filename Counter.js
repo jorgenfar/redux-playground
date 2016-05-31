@@ -7,7 +7,9 @@ const Counter = ({
   stop,
   setModeSequential,
   setModeRandom,
-  mode,
+  setDelay,
+  delay,
+  mode
 }) => (
   <div>
     <button onClick={start}>
@@ -30,6 +32,13 @@ const Counter = ({
         }}
       />
     </label>
+    <label>Delay
+      <input
+        type="number"
+        value={delay}
+        onChange={(event) => setDelay(parseInt(event.target.value), 10)}
+      />
+    </label>
     <hr />
     <div>
       Counter value: {value}
@@ -43,6 +52,8 @@ Counter.propTypes = {
   stop: PropTypes.func.isRequired,
   setModeSequential: PropTypes.func.isRequired,
   setModeRandom: PropTypes.func.isRequired,
+  setDelay: PropTypes.func.isRequired,
+  delay: PropTypes.number.isRequired,
   mode: PropTypes.string.isRequired,
 };
 
