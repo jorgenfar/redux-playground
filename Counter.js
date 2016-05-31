@@ -30,13 +30,11 @@ const Counter = (props) => (
       <input
         type="checkbox"
         checked={props.mode === SLIDE_MODES.RANDOM}
-        onChange={() => {
-          if (props.mode === SLIDE_MODES.SEQUENTIAL) {
-            props.setModeRandom();
-          } else {
-            props.setModeSequential();
-          }
-        }}
+        onChange={
+          props.mode === SLIDE_MODES.SEQUENTIAL ?
+          props.setModeRandom :
+          props.setModeSequential
+        }
       />
     </label>
     <label>Delay
