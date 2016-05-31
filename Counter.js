@@ -19,13 +19,14 @@ const Counter = (props) => (
     >
       Count
     </button>
-    {' '}
+    &nbsp;
     <button
       onClick={props.stop}
       disabled={!props.playing}
     >
       Stop
     </button>
+    &nbsp;
     <label>Random
       <input
         type="checkbox"
@@ -37,7 +38,8 @@ const Counter = (props) => (
         }
       />
     </label>
-    <label>Delay
+    &nbsp;
+    <label>Delay&nbsp;
       <input
         type="number"
         value={props.delay}
