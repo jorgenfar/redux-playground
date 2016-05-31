@@ -36,7 +36,9 @@ const Counter = ({
       <input
         type="number"
         value={delay}
-        onChange={(event) => setDelay(parseInt(event.target.value), 10)}
+        onChange={(event) =>
+          setDelay(parseInt(event.target.value, 10))
+        }
       />
     </label>
     <hr />
