@@ -4,12 +4,14 @@ import { bindActionCreators } from 'redux';
 
 import {
   SLIDE_MODES,
+} from './redux/reducer';
+import {
   start,
   stop,
   setModeSequential,
   setModeRandom,
   setDelay,
-} from './reducer';
+} from './redux/actions';
 
 const Counter = (props) => (
   <div>

@@ -1,11 +1,12 @@
 import { takeEvery, delay } from 'redux-saga';
 import { put } from 'redux-saga/effects';
+
+import { SLIDE_MODES } from './reducer';
 import {
   NEXT_SLIDE,
   RANDOM_SLIDE,
-  SLIDE_MODES,
   START,
-} from './reducer';
+} from './actions';
 
 function* slideShow(getState) {
   while (getState().playing) {

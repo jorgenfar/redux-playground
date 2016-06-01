@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import reducer from './reducer';
-import rootSaga from './sagas';
+import reducer from './redux/reducer';
+import rootSaga from './redux/sagas';
 import Counter from './Counter';
 
 const sagaMiddleware = createSagaMiddleware();
