@@ -7,7 +7,7 @@ export const MODE_SEQUENTIAL = 'MODE_SEQUENTIAL';
 export const MODE_RANDOM = 'MODE_RANDOM';
 export const SET_DELAY = 'SET_DELAY';
 
-// Action creator functions
+// Action creators
 export function start() {
   return {
     type: START,
