@@ -1,7 +1,7 @@
 import { takeEvery, delay } from 'redux-saga';
 import { put } from 'redux-saga/effects';
 
-import { SLIDE_MODES } from './reducer';
+import { SLIDE_MODES } from '../constants';
 import {
   NEXT_SLIDE,
   RANDOM_SLIDE,

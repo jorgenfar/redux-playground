@@ -1,0 +1,4 @@
+export const SLIDE_MODES = {
+  SEQUENTIAL: 'SEQUENTIAL',
+  RANDOM: 'RANDOM',
+};

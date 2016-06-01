@@ -1,3 +1,4 @@
+import { SLIDE_MODES } from '../constants';
 import {
   NEXT_SLIDE,
   RANDOM_SLIDE,
@@ -7,11 +8,6 @@ import {
   MODE_RANDOM,
   SET_DELAY,
 } from './actions';
-
-export const SLIDE_MODES = {
-  SEQUENTIAL: 'SEQUENTIAL',
-  RANDOM: 'RANDOM',
-};
 
 function getRandomSlide(numSlides) {
   return Math.floor(Math.random() * numSlides);
