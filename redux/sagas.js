@@ -1,4 +1,4 @@
-import { takeEvery, delay } from 'redux-saga';
+import { takeLatest, delay } from 'redux-saga';
 import { put } from 'redux-saga/effects';
 
 import { SLIDE_MODES } from '../constants';
@@ -17,7 +17,7 @@ function* slideShow(getState) {
 }
 
 function* startSlideShow(getState) {
-  yield takeEvery(START, () => slideShow(getState));
+  yield takeLatest(START, () => slideShow(getState));
 }
 
 export default function* rootSaga(getState) {
