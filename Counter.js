@@ -42,9 +42,9 @@ const Counter = (props) => (
     <label>Delay&nbsp;
       <input
         type="number"
-        value={props.delay}
-        onChange={(event) =>
-          props.setDelay(parseInt(event.target.value, 10))
+        defaultValue={props.delay}
+        onBlur={({ target }) =>
+          target.value && props.setDelay(parseInt(target.value, 10))
         }
       />
     </label>
