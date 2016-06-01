@@ -3,18 +3,18 @@ import { put } from 'redux-saga/effects';
 
 import { SLIDE_MODES } from '../constants';
 import {
-  NEXT_SLIDE,
-  RANDOM_SLIDE,
   START,
+  nextSlide,
+  randomSlide,
 } from './actions';
 
 function* slideShow(getState) {
   while (getState().playing) {
     if (getState().mode === SLIDE_MODES.SEQUENTIAL) {
-      yield put({ type: NEXT_SLIDE });
+      yield put(nextSlide());
     }
     if (getState().mode === SLIDE_MODES.RANDOM) {
-      yield put({ type: RANDOM_SLIDE });
+      yield put(randomSlide());
     }
     yield delay(getState().delay);
   }

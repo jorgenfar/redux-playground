@@ -8,6 +8,18 @@ export const MODE_RANDOM = 'MODE_RANDOM';
 export const SET_DELAY = 'SET_DELAY';
 
 // Action creators
+export function nextSlide() {
+  return {
+    type: NEXT_SLIDE,
+  };
+}
+
+export function randomSlide() {
+  return {
+    type: RANDOM_SLIDE,
+  };
+}
+
 export function start() {
   return {
     type: START,
