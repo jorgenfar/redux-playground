@@ -9,17 +9,16 @@ import {
   SET_DELAY,
 } from './actions';
 
-function getRandomSlide(numSlides) {
-  return Math.floor(Math.random() * numSlides);
-}
+const getRandomSlide = (numSlides) =>
+  Math.floor(Math.random() * numSlides);
 
-export default function reducer(state = {
+export default (state = {
   slide: 0,
   playing: false,
   numSlides: 10,
   mode: SLIDE_MODES.SEQUENTIAL,
   delay: 500,
-}, action) {
+}, action) => {
   switch (action.type) {
     case NEXT_SLIDE: {
       return {
@@ -70,4 +69,4 @@ export default function reducer(state = {
     default:
       return state;
   }
-}
+};
