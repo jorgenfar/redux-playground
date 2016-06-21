@@ -1,8 +1,8 @@
 import { takeLatest, delay } from 'redux-saga';
 import { put } from 'redux-saga/effects';
 
-import { SLIDE_MODES } from '../constants';
-import { START, nextSlide, randomSlide } from './actions';
+import { SLIDE_MODES, START } from './constants';
+import { nextSlide, randomSlide } from './actions';
 
 function* slideShow(getState) {
   while (getState().playing) {

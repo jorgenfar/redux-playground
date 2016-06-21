@@ -1,37 +1,31 @@
-export const NEXT_SLIDE = 'NEXT_SLIDE';
-export const RANDOM_SLIDE = 'RANDOM_SLIDE';
-export const START = 'START';
-export const STOP = 'STOP';
-export const MODE_SEQUENTIAL = 'MODE_SEQUENTIAL';
-export const MODE_RANDOM = 'MODE_RANDOM';
-export const SET_DELAY = 'SET_DELAY';
+import * as CONSTANTS from './constants';
 
 export const nextSlide = () => ({
-  type: NEXT_SLIDE,
+  type: CONSTANTS.NEXT_SLIDE,
 });
 
 export const randomSlide = () => ({
-  type: RANDOM_SLIDE,
+  type: CONSTANTS.RANDOM_SLIDE,
 });
 
 export const start = () => ({
-  type: START,
+  type: CONSTANTS.START,
 });
 
 export const stop = () => ({
-  type: STOP,
+  type: CONSTANTS.STOP,
 });
 
 export const setModeRandom = () => ({
-  type: MODE_RANDOM,
+  type: CONSTANTS.MODE_RANDOM,
 });
 
 export const setModeSequential = () => ({
-  type: MODE_SEQUENTIAL,
+  type: CONSTANTS.MODE_SEQUENTIAL,
 });
 
 export const setDelay = (delay) => ({
-  type: SET_DELAY,
+  type: CONSTANTS.SET_DELAY,
   payload: {
     delay,
   },

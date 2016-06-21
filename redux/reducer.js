@@ -1,13 +1,4 @@
-import { SLIDE_MODES } from '../constants';
-import {
-  NEXT_SLIDE,
-  RANDOM_SLIDE,
-  START,
-  STOP,
-  MODE_SEQUENTIAL,
-  MODE_RANDOM,
-  SET_DELAY,
-} from './actions';
+import * as CONSTANTS from './constants';
 
 const getRandomSlide = (numSlides) =>
   Math.floor(Math.random() * numSlides);
@@ -16,17 +7,17 @@ export default (state = {
   slide: 0,
   playing: false,
   numSlides: 10,
-  mode: SLIDE_MODES.SEQUENTIAL,
+  mode: CONSTANTS.SLIDE_MODES.SEQUENTIAL,
   delay: 500,
 }, action) => {
   switch (action.type) {
-    case NEXT_SLIDE: {
+    case CONSTANTS.NEXT_SLIDE: {
       return {
         ...state,
         slide: (state.slide + 1) % state.numSlides,
       };
     }
-    case RANDOM_SLIDE: {
+    case CONSTANTS.RANDOM_SLIDE: {
       let newSlide = getRandomSlide(state.numSlides);
       while (newSlide === state.slide) {
         newSlide = getRandomSlide(state.numSlides);
@@ -36,31 +27,31 @@ export default (state = {
         slide: newSlide,
       };
     }
-    case START: {
+    case CONSTANTS.START: {
       return {
         ...state,
         playing: true,
       };
     }
-    case STOP: {
+    case CONSTANTS.STOP: {
       return {
         ...state,
         playing: false,
       };
     }
-    case MODE_SEQUENTIAL: {
+    case CONSTANTS.MODE_SEQUENTIAL: {
       return {
         ...state,
-        mode: SLIDE_MODES.SEQUENTIAL,
+        mode: CONSTANTS.SLIDE_MODES.SEQUENTIAL,
       };
     }
-    case MODE_RANDOM: {
+    case CONSTANTS.MODE_RANDOM: {
       return {
         ...state,
-        mode: SLIDE_MODES.RANDOM,
+        mode: CONSTANTS.SLIDE_MODES.RANDOM,
       };
     }
-    case SET_DELAY: {
+    case CONSTANTS.SET_DELAY: {
       return {
         ...state,
         delay: action.payload.delay,
