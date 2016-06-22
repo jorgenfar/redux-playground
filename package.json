@@ -9,7 +9,7 @@
     "build": "node_modules/webpack/bin/webpack.js -p"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jørgen Faret",
   "license": "ISC",
   "dependencies": {
     "react": "^15.1.0",
